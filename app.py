@@ -1,12 +1,12 @@
-from src.config import settings
+from backend.src.config import settings
 from flask import Flask, render_template, jsonify, request
-from src.helper import create_embeddings
+from backend.src.helper import create_embeddings
 from langchain_pinecone import PineconeVectorStore
 from langchain.chains import create_retrieval_chain
 from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
-from src.prompt import system_prompt
+from backend.src.prompt import system_prompt
 import os
 
 app = Flask(__name__)
