@@ -12,7 +12,16 @@ if not PINECONE_API_KEY:
 
 print(PINECONE_API_KEY)  # safe debug
 
-extracted_docs = load_pdf_files("data")
+BASE_DIR = os.path.dirname(
+    os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))
+    )
+)
+
+DATA_DIR = os.path.join(BASE_DIR, "Data")
+print("Loading PDFs from:", DATA_DIR)
+
+extracted_docs = load_pdf_files(file_path = DATA_DIR)
 minimal_docs = filter_documents(extracted_docs)
 text_chunks = text_split(minimal_docs)
 

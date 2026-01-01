@@ -6,7 +6,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 import torch
 
 
-def load_pdf_files(file_path):
+def load_pdf_files(file_path:str):
     loader = DirectoryLoader(file_path, glob="*.pdf", loader_cls=PyPDFLoader)
     documents = loader.load()
     return documents
@@ -22,7 +22,7 @@ def filter_documents(docs:List[Document]) -> List[Document]:
 
 
 def text_split(minimal_docs):
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=20)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     chunks = text_splitter.split_documents(minimal_docs)
     return chunks
 

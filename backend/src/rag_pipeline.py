@@ -1,7 +1,7 @@
 from helper import create_embeddings
 from prompt import system_prompt
 from langchain_pinecone import PineconeVectorStore
-from langchain_core.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate  
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from langchain_ollama import OllamaLLM
@@ -30,7 +30,7 @@ prompt = PromptTemplate(
 
 
 llm = OllamaLLM(
-    model="tinyllama",
+    model="llama3",
     temperature=0.3
 )
 
