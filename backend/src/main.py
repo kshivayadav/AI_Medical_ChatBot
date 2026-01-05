@@ -7,6 +7,10 @@ import time
 import uuid
 from rag_pipeline import rag_chain
 from schema import ChatRequest,ChatResponse
+import uvicorn
+import warnings
+warnings.filterwarnings("ignore")
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -20,7 +24,7 @@ app = FastAPI(title = "Medical Chatbot API",
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # ⚠️ Restrict in production
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -105,3 +109,5 @@ async def medical_chatbot(query:ChatRequest):
         )
 
 
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="localhost", port=8000, reload=True)
