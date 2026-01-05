@@ -11,9 +11,6 @@ import os
 
 app = Flask(__name__)
 
-
-
-
 PINECONE_API_KEY=settings.PINECONE_API_KEY
 HUGGINGFACEHUB_API_TOKEN=settings.HUGGINGFACE_API_KEY
 PINECONE_ENVIRONMENT=settings.PINECONE_ENV
@@ -21,8 +18,6 @@ PINECONE_ENVIRONMENT=settings.PINECONE_ENV
 print(PINECONE_API_KEY)
 print(PINECONE_ENVIRONMENT)
 print(HUGGINGFACEHUB_API_TOKEN)
-
-
 
 embeddings = create_embeddings()
 
@@ -32,9 +27,6 @@ docsearch = PineconeVectorStore.from_existing_index(
     index_name=index_name,
     embedding=embeddings
 )
-
-
-
 
 retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k":3})
 
